@@ -23,7 +23,7 @@ https://user-images.githubusercontent.com/21256355/192135828-8fa7d9bb-9b4d-41f9-
 
 The source code is hosted on GitHub: [qiayuanliao/legged_control](https://github.com/qiayuanliao/legged_control).
 
-```
+```bash
 # Clone legged_control
 git clone git@github.com:qiayuanliao/legged_control.git
 ```
@@ -34,7 +34,7 @@ OCS2 is a huge monorepo; **DO NOT** try to compile the whole repo. You only need
 its dependencies following the step below.
 
 1. You are supposed to clone the OCS2, pinocchio, and hpp-fcl as described in the documentation of OCS2.
-   ```
+   ```bash
    # Clone OCS2
    git clone git@github.com:leggedrobotics/ocs2.git
    # Clone pinocchio
@@ -48,7 +48,7 @@ its dependencies following the step below.
    ```
 2. Compile the `ocs2_legged_robot_ros` package with [catkin tools](https://catkin-tools.readthedocs.io/en/latest/)
    instead of `catkin_make`. It will take you about ten minutes.
-   ```
+   ```bash
    catkin config -DCMAKE_BUILD_TYPE=RelWithDebInfo
    catkin build ocs2_legged_robot_ros ocs2_self_collision_visualization
    ```
@@ -60,20 +60,20 @@ its dependencies following the step below.
 
 Build the source code of `legged_control` by:
 
-```
+```bash
 catkin build legged_controllers legged_unitree_description
 ```
 
 Build the simulation (**DO NOT** run on the onboard computer)
 
-```
+```bash
 catkin build legged_gazebo
 ```
 
 Build the hardware interface real robot. If you use your computer only for simulation, you **DO NOT** need to
 compile `legged_unitree_hw` (TODO: add a legged prefix to the package name)
 
-```
+```bash
 catkin build legged_unitree_hw
 ```
 
@@ -81,32 +81,31 @@ catkin build legged_unitree_hw
 
 1. Set your robot type as an environment variable: ROBOT_TYPE
 
-```
+```bash
 export ROBOT_TYPE=a1
 ```
 
 2. Run the simulation:
 
-```
+```bash
 roslaunch legged_unitree_description empty_world.launch
 ```
 
 Or on the robot hardware:
 
-```
+```bash
 roslaunch legged_unitree_hw legged_unitree_hw.launch
 ```
 
 3. Load the controller:
 
-```
+```bash
 roslaunch legged_controllers load_controller.launch cheater:=false
 ```
 
-4. Start the `legged_controller` or `legged_cheater_controller`, **NOTE that you are not allowed to start
-   the `legged_cheater_controller` in real hardware!**
+4. Start the `legged_controller` or `legged_cheater_controller` using the following command
 
-```
+```bash
 rosservice call /controller_manager/switch_controller "start_controllers: ['controllers/legged_controller']                   
 stop_controllers: ['']
 strictness: 0
@@ -114,9 +113,11 @@ start_asap: false
 timeout: 0.0" 
 ```
 
+**NOTE that you are not allowed to start the `legged_cheater_controller` in real hardware!**
+
 Or, you can start the controller using `rqt_controller_manager` GUI:
 
-```
+```bash
 sudo apt install ros-noetic-rqt-controller-manager
 rosrun rqt_controller_manager rqt_controller_manager
 ```
