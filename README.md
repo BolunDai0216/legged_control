@@ -83,12 +83,16 @@ catkin build legged_unitree_hw
 
 ```bash
 export ROBOT_TYPE=a1
+# or
+export ROBOT_TYPE=b1
 ```
 
 2. Run the simulation:
 
 ```bash
 roslaunch legged_unitree_description empty_world.launch
+# or
+roslaunch b1_description empty_world.launch
 ```
 
 Or on the robot hardware:
