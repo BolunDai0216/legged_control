@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(legged_unitree_description)
+project(b1_description)
 
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED

@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 
-<robot name="b1_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot">
+
+    <xacro:arg name="robot_type" default="b1"/>
 
     <xacro:include filename="$(find b1_description)/urdf/common/materials.xacro"/>
     <xacro:include filename="$(find b1_description)/urdf/common/leg.xacro"/>
     <xacro:include filename="$(find b1_description)/urdf/common/gazebo.xacro"/>
     <xacro:include filename="$(find b1_description)/urdf/common/imu.xacro"/>
-    <xacro:include filename="$(find b1_description)/urdf/b1/const.xacro"/>
+    <xacro:include filename="$(find b1_description)/urdf/$(arg robot_type)/const.xacro"/>
 
     <link name="base">
         <visual>

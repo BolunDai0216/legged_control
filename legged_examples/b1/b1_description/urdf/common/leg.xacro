@@ -4,9 +4,10 @@
 
     <xacro:include filename="$(find b1_description)/urdf/common/transmission.xacro"/>
 
-    <xacro:macro name="leg" params="name mirror mirror_dae front_hind front_hind_dae">
+    <xacro:macro name="leg" params="name mirror mirror_dae front_hind front_hind_dae *origin">
 
         <joint name="${name}_HAA" type="revolute">
+            <xacro:insert_block name="origin"/>
             <xacro:if value="${(mirror_dae == False) and (front_hind_dae == True)}">
                 <origin rpy="0 0 0" xyz="${leg_offset_x} ${-leg_offset_y} 0"/>
             </xacro:if>
