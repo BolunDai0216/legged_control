@@ -117,7 +117,7 @@ start_asap: false
 timeout: 0.0" 
 ```
 
-and pubish to `/cmd_vel` you robot CoM target configuration
+and pubish to `/cmd_vel` your robot CoM target configuration
 
 ```bash
 rostopic pub -1 /cmd_vel geometry_msgs/Twist "linear:
