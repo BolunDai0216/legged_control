@@ -52,9 +52,9 @@
         </inertial>
     </link>
 
-    <xacro:leg name="RF" mirror="-1" mirror_dae= "False" front_hind="1"  front_hind_dae="True"  />
-    <xacro:leg name="LF" mirror="1"  mirror_dae="True"   front_hind="1"  front_hind_dae="True"  />
-    <xacro:leg name="RH" mirror="-1" mirror_dae="False"  front_hind="-1" front_hind_dae="False" />
-    <xacro:leg name="LH" mirror="1"  mirror_dae="True"   front_hind="-1" front_hind_dae="False" />
+    <xacro:leg name="RF" mirror="-1" mirror_dae="False" front_hind="1"  front_hind_dae="True" />
+    <xacro:leg name="LF" mirror="1"  mirror_dae="True"  front_hind="1"  front_hind_dae="True" />
+    <xacro:leg name="RH" mirror="-1" mirror_dae="False" front_hind="-1" front_hind_dae="False" />
+    <xacro:leg name="LH" mirror="1"  mirror_dae="True"  front_hind="-1" front_hind_dae="False" />
 
 </robot>
