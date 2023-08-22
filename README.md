@@ -117,6 +117,19 @@ start_asap: false
 timeout: 0.0" 
 ```
 
+and pubish to `/cmd_vel` you robot CoM target configuration
+
+```bash
+rostopic pub -1 /cmd_vel geometry_msgs/Twist "linear:
+  x: 0.0
+  y: 0.0
+  z: 0.2
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.0"
+```
+
 **NOTE that you are not allowed to start the `legged_cheater_controller` in real hardware!**
 
 Or, you can start the controller using `rqt_controller_manager` GUI:
