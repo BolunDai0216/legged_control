@@ -234,7 +234,7 @@ it. (because the code they got at the time was not stable, so the spend time can
 I recommended to use an external computing device such as NUC to run this control framework. The author uses the 11th
 generation of NUC, and the computing frequency of NMPC can be close to 200Hz.
 
-### Your costum rorbots
+### Your custom robot
 
 Deploying this framework to your robot is very simple, the steps are as follows:
 
