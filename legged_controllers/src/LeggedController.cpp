@@ -131,9 +131,15 @@ void LeggedController::update(const ros::Time& time, const ros::Duration& period
     stopRequest(time);
   }
 
+  // for (size_t j = 0; j < leggedInterface_->getCentroidalModelInfo().actuatedDofNum; ++j) {
+  //   hybridJointHandles_[j].setCommand(posDes(j), velDes(j), 0, 3, torque(j));
+  // }
+
   for (size_t j = 0; j < leggedInterface_->getCentroidalModelInfo().actuatedDofNum; ++j) {
-    hybridJointHandles_[j].setCommand(posDes(j), velDes(j), 0, 3, torque(j));
+    hybridJointHandles_[j].setCommand(posDes(j), velDes(j), 50, 5, torque(j));
   }
+
+  ROS_ERROR_STREAM("torque1: " << torque(2) << std::endl);
 
   // Visualization
   robotVisualizer_->update(currentObservation_, mpcMrtInterface_->getPolicy(), mpcMrtInterface_->getCommand());
