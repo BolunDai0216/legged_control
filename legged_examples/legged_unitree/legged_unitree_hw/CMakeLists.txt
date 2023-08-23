@@ -28,7 +28,8 @@ include_directories(
 
 link_directories(lib)
 
-set(EXTRA_LIBS libunitree_legged_sdk_amd64.so lcm)
+# set(EXTRA_LIBS libunitree_legged_sdk_amd64.so lcm)
+set(EXTRA_LIBS libunitree_legged_sdk.so lcm)
 
 ## Declare cpp executables
 add_executable(${PROJECT_NAME}
