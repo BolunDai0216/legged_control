@@ -276,3 +276,8 @@ through whole body control and hierarchical optimization,” in IEEE-RAS Interna
 ## Changes
 
 - Replace the contact sensor based contact detection with the gait schedule see [here](https://github.com/BolunDai0216/legged_control/blob/39d21bfdaef2588c11e1f730627b225cfc27d9ab/legged_controllers/src/LeggedController.cpp#L163)
+- Follow the steps [here](https://github.com/qiayuanliao/legged_control/issues/9#issuecomment-1448876507) to update `legged_unitree_hw`, note that the following line should be used:
+
+```c++
+udp_ = std::make_shared<UNITREE_LEGGED_SDK::UDP>(UNITREE_LEGGED_SDK::LOWLEVEL, 8090, "192.168.123.10", 8007);
+```
