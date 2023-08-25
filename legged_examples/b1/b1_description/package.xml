@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
     <name>b1_description</name>
-    <version>0.0.0</version>
-    <description>Unitree B1 robot description files</description>
+    <version>0.0.1</version>
+    <description>Unitree robot description files</description>
     <maintainer email="bd1555@nyu.edu">Bolun Dai</maintainer>
     <license>BSD</license>
     <author email="bd1555@nyu.edu">Bolun Dai</author>

@@ -136,7 +136,7 @@ void LeggedController::update(const ros::Time& time, const ros::Duration& period
   // }
 
   for (size_t j = 0; j < leggedInterface_->getCentroidalModelInfo().actuatedDofNum; ++j) {
-    hybridJointHandles_[j].setCommand(posDes(j), velDes(j), 50, 5, torque(j));
+    hybridJointHandles_[j].setCommand(posDes(j), velDes(j), 150, 10, torque(j));
   }
 
   ROS_ERROR_STREAM("torque1: " << torque(2) << std::endl);

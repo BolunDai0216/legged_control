@@ -10,13 +10,13 @@
     <xacro:include filename="$(find b1_description)/urdf/common/imu.xacro"/>
     <xacro:include filename="$(find b1_description)/urdf/$(arg robot_type)/const.xacro"/>
 
+
     <link name="base">
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="package://b1_description/meshes/trunk.dae" scale="1 1 1"/>
+                <mesh filename="package://b1_description/meshes/$(arg robot_type)/trunk.dae" scale="1 1 1"/>
             </geometry>
-            <material name="orange"/>
         </visual>
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0"/>
@@ -28,15 +28,51 @@
             <origin rpy="0 0 0" xyz="${trunk_com_x} ${trunk_com_y} ${trunk_com_z}"/>
             <mass value="${trunk_mass}"/>
             <inertia
-                ixx="${trunk_ixx}" ixy="${trunk_ixy}" ixz="${trunk_ixz}"
-                iyy="${trunk_iyy}" iyz="${trunk_iyz}"
-                izz="${trunk_izz}"/>  
+                    ixx="${trunk_ixx}" ixy="${trunk_ixy}" ixz="${trunk_ixz}"
+                    iyy="${trunk_iyy}" iyz="${trunk_iyz}"
+                    izz="${trunk_izz}"/>
         </inertial>
     </link>
 
-    <xacro:leg name="RF" mirror="-1" mirror_dae="False" front_hind="1"  front_hind_dae="True" />
-    <xacro:leg name="LF" mirror="1"  mirror_dae="True"  front_hind="1"  front_hind_dae="True" />
-    <xacro:leg name="RH" mirror="-1" mirror_dae="False" front_hind="-1" front_hind_dae="False" />
-    <xacro:leg name="LH" mirror="1"  mirror_dae="True"  front_hind="-1" front_hind_dae="False" />
+    <joint name="payload_joint" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <parent link="base"/>
+        <child link="payload"/>
+    </joint>
+
+    <link name="payload">
+        <visual>
+            <origin rpy="0 0 0" xyz="${payload_x_offset} ${payload_y_offset} ${payload_z_offset}"/>
+            <geometry>
+                <box size="0.15 0.15 0.3"/>
+            </geometry>
+        </visual>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <mass value="${payload_mass}"/>
+            <inertia
+                    ixx="${payload_ixx}" ixy="${payload_ixy}" ixz="${payload_ixz}"
+                    iyy="${payload_iyy}" iyz="${payload_iyz}"
+                    izz="${payload_izz}"/>
+        </inertial>
+    </link>
+
+    <xacro:IMU connected_to="base" imu_name="unitree_imu" xyz="0. 0. 0." rpy="0. 0. 0."/>
+
+    <xacro:leg prefix="RF" mirror="-1" mirror_dae="False" front_hind="1" front_hind_dae="True">
+        <origin rpy="0 0 0" xyz="${leg_offset_x} ${-leg_offset_y} 0"/>
+    </xacro:leg>
+
+    <xacro:leg prefix="LF" mirror="1" mirror_dae="True" front_hind="1" front_hind_dae="True">
+        <origin rpy="0 0 0" xyz="${leg_offset_x} ${leg_offset_y} 0"/>
+    </xacro:leg>
+
+    <xacro:leg prefix="RH" mirror="-1" mirror_dae="False" front_hind="-1" front_hind_dae="False">
+        <origin rpy="0 0 0" xyz="${-leg_offset_x} ${-leg_offset_y} 0"/>
+    </xacro:leg>
+
+    <xacro:leg prefix="LH" mirror="1" mirror_dae="True" front_hind="-1" front_hind_dae="False">
+        <origin rpy="0 0 0" xyz="${-leg_offset_x} ${leg_offset_y} 0"/>
+    </xacro:leg>
 
 </robot>

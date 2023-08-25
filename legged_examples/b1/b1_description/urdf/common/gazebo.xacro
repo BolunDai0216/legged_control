@@ -2,7 +2,7 @@
 <robot>
     <!-- ros_control plugin -->
     <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <plugin name="gazebo_ros_control" filename="liblegged_hw_sim.so">
             <robotNamespace>/</robotNamespace>
             <robotParam>b1_description</robotParam>
             <robotSimType>legged_gazebo/LeggedHWSim</robotSimType>
@@ -21,5 +21,6 @@
             <rpyOffsets>0 0 0</rpyOffsets>
         </plugin>
     </gazebo>
+
 
 </robot>

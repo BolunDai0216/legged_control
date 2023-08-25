@@ -1,5 +1,5 @@
 <launch>
-    <arg name="robot_type" default="b1" doc="Robot type: [b1]"/>
+    <arg name="robot_type" default="$(env ROBOT_TYPE)" doc="Robot type: [b1]"/>
 
     <param name="b1_description" command="$(find xacro)/xacro $(find b1_description)/urdf/robot.xacro
        robot_type:=$(arg robot_type)
